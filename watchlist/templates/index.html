@@ -4,16 +4,17 @@
 		<title>
 			{{ name }}'s Watchlist
 		</title>
+		<link rel = "stylesheet" href="{{ url_for('static',filename = 'style.css') }}">
 	</head>
 	<body>
 		<h2>{{ name }}'s Watchlist </h2>
 		<p> {{ movies | length }} Titles</p>
-		<ul>
+		<ul class = "movie-list" >
 			{% for movie in movies %}
 			<li>{{ movie.title }} - {{ movie.year }}</li>
 			{% endfor %}
 		</ul>
 
-		<img src = "http://helloflask.com/totoro.gif"/>
+		<img  alt = "Walking Totoro " class = "totoro" src = "{{ url_for('static',filename = 'images/to.gif')}}"/>
 	</body>
 </html>
