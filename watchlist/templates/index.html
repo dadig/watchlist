@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			{{ name }}'s Watchlist
+		</title>
+	</head>
+	<body>
+		<h2>{{ name }}'s Watchlist </h2>
+		<p> {{ movies | length }} Titles</p>
+		<ul>
+			{% for movie in movies %}
+			<li>{{ movie.title }} - {{ movie.year }}</li>
+			{% endfor %}
+		</ul>
+
+		<img src = "http://helloflask.com/totoro.gif"/>
+	</body>
+</html>
