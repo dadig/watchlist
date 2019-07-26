@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 		<p> {{ movies | length }} Titles</p>
+		<form method = 'post'>
+			{{ form.csrf_token }}
+			{{ form.title.label }}
+			{{ form.title }}
+			{{ form.year.label }}
+			{{ form.year }}
+			{{ form.submit }}
+		</form>
 		<ul class = "movie-list" >
 			{% for movie in movies %}
 			<li>{{ movie.title }} - {{ movie.year }}
 			<span class = "float-right">
+				<a class = "douban" href = "{{ url_for('edit',movie_id = movie.id )}}" target = "_blank" title  = "edit this movie ">Edit</a>
+				<form class = "inline-form" method = 'post' action = "{{ url_for('delete',movie_id = movie.id )}}" target = "_blank" title  = " Delete this movie ">
+					{{ form_delete.submit(class = 'btn') }}
+				</form>
 				<a class = "imdb" href = "https://www.imdb.com/find?q={{ movie.title }}" target = "_blank" title  = "Find this movie on IMDb">IMDb</a>
 				<a class = "douban" href = "https://movie.douban.com/subject_search?search_text={{ movie.title }}" target = "_blank" title  = "Find this movie on IMDb">DouBan</a>
 			</span>

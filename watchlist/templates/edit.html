@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h3>Edit item </h3>
+<form method = 'post'>
+
+	{{ form.csrf_token }}
+	{{ form.title.label }}
+	{{ form.title(value = movie.title)}}
+	{{ form.year.label }}
+	{{ form.year(value = movie.year) }}
+	{{ form.submit }}
+</form>
+
+{% endblock %}
